@@ -1,5 +1,0 @@
-using LinearAlgebra
-
-function pdbParser(str::String) 
-    io = open(str, "r")
-end
