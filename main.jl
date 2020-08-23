@@ -1,4 +1,4 @@
-using Plots
+#using Plots
 
 include("algorithms.jl")
 include("pdbParser.jl")
@@ -11,8 +11,12 @@ B = convert(Matrix, dfB[1:3])
 
 m,n = size(A)
 
-pyplot()
-anim = @animate for i ∈ -12:24
-    scatter(A[1:m,1], A[1:m,2], A[1:m,3], camera=(10*i,10*i))
-end
-gif(anim, "animation.gif", fps = 10)
+Q, r = rmsd(A,B)
+
+r
+
+#pyplot()
+#anim = @animate for i ∈ -12:24
+#    scatter(A[1:m,1], A[1:m,2], A[1:m,3], camera=(10*i,10*i))
+#end
+#gif(anim, "animation.gif", fps = 10)

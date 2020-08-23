@@ -7,7 +7,7 @@ function pdbParser(str::String)
     
     for line ∈ lines
         words = split(line)
-        if (words[1] == "ATOM" || words[1] == "HETATM")
+        if (words[1] == "ATOM")
             len = length(words)
             
             # Get and parse coordinates
@@ -16,13 +16,16 @@ function pdbParser(str::String)
             
             # Get atom symbol
             sym = words[len]
-    
-            push!(df, (x,y,z,sym))
+            
+            if (sym != "H")
+                push!(df, (x,y,z,sym))
+            end
         end
     end
     
     return df
 end
 
-# file = "./data/5r80.pdb"
-# df = pdbParser(file)
+#file = "./data/5r80.pdb"
+#file = "./data/5r80.pdb"
+#df = pdbParser(file)
